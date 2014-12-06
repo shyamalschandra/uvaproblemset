@@ -51,12 +51,18 @@ class myStuff implements Runnable
         String input;
         StringTokenizer idata;
         int a, b;
+        int ctr = 0;
         while ((input = Main.ReadLn(255)) != null)
         {
             idata = new StringTokenizer(input);
             a = Integer.parseInt(idata.nextToken());
             b = Integer.parseInt(idata.nextToken());
-            System.out.print(a + " " + b);
+            if (ctr > 0)
+            {
+                System.out.print("\n" + a + " " + b);
+            }
+            else 
+                System.out.print(a + " " + b);
             maxcycle = -1;
             for (int c = a; c <= b; c++)
             {
@@ -67,7 +73,8 @@ class myStuff implements Runnable
                 }
                 if (tempcycle > maxcycle) maxcycle = tempcycle;
             }
-            System.out.print(" " + maxcycle + "\n");
+            System.out.print(" " + maxcycle);
+            ctr++;
         }
     }
     
