@@ -16,7 +16,7 @@ class Main implements Runnable
         {
             while (length < maxLength)
             {
-                input = System.io.read();
+                input = System.in.read();
                 if ((input < 0) || (input == '\n')) break;
                 line [length++] += input;
             }
@@ -37,14 +37,66 @@ class Main implements Runnable
     
     public void run()
     {
-        new myStuff.run();
+        new myStuff().run();
     }
 }
 
 class myStuff implements Runnable 
 {
+    int maxcycle;
+    int tempcycle;
+    
     public void run() 
     {
+        String input;
+        StringTokenizer idata;
+        int a, b;
+        while ((input = Main.ReadLn(255)) != null)
+        {
+            idata = new StringTokenizer(input);
+            a = Integer.parseInt(idata.nextToken());
+            b = Integer.parseInt(idata.nextToken());
+            System.out.print(a + " " + b);
+            maxcycle = -1;
+            for (int c = a; c <= b; c++)
+            {
+                tempcycle = 0;
+                if ( recurse(c) == -1 )
+                {
+                    System.out.println("Problem!!!");
+                }
+                if (tempcycle > maxcycle) maxcycle = tempcycle;
+            }
+            System.out.print(" " + maxcycle + "\n");
+        }
+    }
+    
+    public int recurse(int input)
+    {
+        tempcycle++;
         
+        if (input==1) 
+        {
+            return 1;
+        }
+        if ((input % 2) == 1) 
+        {
+            return recurse(odd(input));
+        }
+        else
+        {
+            return recurse(even(input));
+        }
+    }
+    
+    public int odd(int input)
+    {
+        return 3*input + 1;
+    }
+    
+    public int even(int input)
+    {
+        
+        return input / 2;
     }
 }
