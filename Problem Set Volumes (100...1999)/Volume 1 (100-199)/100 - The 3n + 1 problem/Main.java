@@ -1,3 +1,7 @@
+// Solution: Copyright Shyamal Chandra, 2014
+// Link to original problem description: http://uva.onlinejudge.org/external/1/100.pdf
+// 
+
 import java.io.*;
 import java.util.*;
 
